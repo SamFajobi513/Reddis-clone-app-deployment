@@ -1,7 +1,7 @@
 key-name   = "Hellooooo"
-sg-name    = ""
+sg-name    = "ghffgfggf"
 access-key = "dfd"
-ami        = ""
+ami        = "fgfgfggggfgf"
 
 #Note: Credentials has been ignored using the git ignore file
 
