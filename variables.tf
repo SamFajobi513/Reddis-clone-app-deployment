@@ -1,3 +1,6 @@
-variable "instance_type" {}
+variable "instance_type" { description = "typeOfInstance" }
 variable "ami" {}
-variable "key_name" {}
+variable "key-name" {}
+variable "instance-name" {}
+variable "sg-name" {}
+variable "access-key" {}
