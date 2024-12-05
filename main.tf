@@ -1,10 +1,9 @@
 resource "aws_instance" "ec2" {
   ami                    = var.ami
-  instance_type          = "t2.2xlarge"
+  instance_type          = "t2.large"
   key_name               = var.key-name
-  subnet_id              = aws_subnet.public-subnet.id
+  subnet_id              = var.subnet-id
   vpc_security_group_ids = [aws_security_group.security-group.id]
-  iam_instance_profile   = aws_iam_instance_profile.instance-profile.name
   root_block_device {
     volume_size = 30
   }
@@ -18,8 +17,8 @@ resource "aws_instance" "ec2" {
 
 
 resource "aws_security_group" "security-group" {
-  vpc_id      = aws_vpc.vpc.id
-  description = "Allowing Jenkins, Sonarqube, SSH Access"
+  name        = var.sg-name
+  description = "Allowing Jenkins, Sonarqube, SSH Access and TLS traffic"
 
   ingress = [
     for port in [22, 8080, 9000, 9090, 80] : {
